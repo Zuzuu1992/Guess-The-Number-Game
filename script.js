@@ -42,3 +42,22 @@ checkButton.addEventListener("click", () => {
     inputNumber.disabled = true;
   }
 });
+
+function generateRandomNumber() {
+  randomNumberValue = Math.floor(Math.random() * 100) + 1;
+}
+
+reset.addEventListener("click", () => {
+  const scoreValue = parseInt(score.textContent);
+  const highscoreValue = parseInt(highscore.textContent);
+  generateRandomNumber();
+  inputNumber.value = "";
+  randomNumber.textContent = "?";
+  body.style.backgroundColor = "#222";
+  hintMessage.textContent = "Start guessing...";
+  score.textContent = "20";
+  inputNumber.disabled = false;
+  if (scoreValue > highscoreValue) {
+    highscore.textContent = scoreValue;
+  }
+});
