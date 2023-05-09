@@ -12,6 +12,7 @@ let randomNumberValue = Math.floor(Math.random() * 100) + 1;
 checkButton.addEventListener("click", () => {
   const inputNumberValue = Number(inputNumber.value);
   const scoreValue = parseInt(score.textContent);
+  const highscoreValue = parseInt(highscore.textContent);
 
   if (inputNumberValue !== randomNumberValue) {
     score.textContent = scoreValue - 1;
@@ -35,11 +36,14 @@ checkButton.addEventListener("click", () => {
   }
   if (inputNumberValue === randomNumberValue) {
     hintMessage.textContent = "✅ Correct Number!";
-
-    highscore.textContent = scoreValue;
     body.style.backgroundColor = "#60b347";
     randomNumber.textContent = randomNumberValue;
     inputNumber.disabled = true;
+    if (highscoreValue <= scoreValue) {
+      highscore.textContent = scoreValue;
+    } else if (highscoreValue > scoreValue) {
+      highscore.textContent = highscoreValue;
+    }
   }
 });
 
